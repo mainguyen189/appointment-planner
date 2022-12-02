@@ -40,7 +40,7 @@ export const ContactsPage = ({contacts, addContact}) => {
   return (
     <div>
       <section>
-        <h2>Add Contact {duplicate? "This name already exist": ""}</h2>
+        <h2>{duplicate? "This name already exist - Retry": "Input contact details"}</h2>
         <ContactForm name={name} setName={setName}
                       phone={phone} setPhone={setPhone}
                       email={email} setEmail={setEmail}
