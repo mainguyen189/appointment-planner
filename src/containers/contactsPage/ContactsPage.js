@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ContactForm } from "../../components/contactForm/ContactForm";
 import { TileList } from "../../components/tileList/TileList";
 
-export const ContactsPage = ({contacts, addContact}) => {
+export const ContactsPage = ({ contacts, addContact }) => {
   //Define state variables for contact info and duplicate check
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -21,7 +21,7 @@ export const ContactsPage = ({contacts, addContact}) => {
   };
 
   //Using hooks, check for contact name in the contacts array variable in props
-  useEffect( () => {
+  useEffect(() => {
     const isNameDuplicate = () => {
       const found = contacts.find((contact) => contact.name === name);
       if (found !== undefined) {
@@ -40,16 +40,25 @@ export const ContactsPage = ({contacts, addContact}) => {
   return (
     <div>
       <section>
-        <h2>{duplicate? "This name already exist - Retry": "Input contact details"}</h2>
-        <ContactForm name={name} setName={setName}
-                      phone={phone} setPhone={setPhone}
-                      email={email} setEmail={setEmail}
-                      handleSubmit={handleSubmit}/> 
+        <h2>
+          {duplicate
+            ? "This name already exist - Retry"
+            : "Input contact details"}
+        </h2>
+        <ContactForm
+          name={name}
+          setName={setName}
+          phone={phone}
+          setPhone={setPhone}
+          email={email}
+          setEmail={setEmail}
+          handleSubmit={handleSubmit}
+        />
       </section>
       <hr />
       <section>
         <h2>Contacts</h2>
-        <TileList tiles={contacts}/>
+        <TileList tiles={contacts} />
       </section>
     </div>
   );
